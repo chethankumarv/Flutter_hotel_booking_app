@@ -1,0 +1,31 @@
+name: "Flutter CodeQL Config"
+
+disable-default-queries: false  # Allows default security scanning
+queries:
+  - uses: security-and-quality  # Default CodeQL pack
+
+paths:
+  - lib/                      # Main Flutter code
+  - functions/lib/           # For Firebase Cloud Functions if using Dart
+  - android/app/src/main     # Optional native code
+  - ios/                     # Optional iOS native code
+
+paths-ignore:
+  - build/
+  - .dart_tool/
+  - "**/*.g.dart"
+  - "**/*.freezed.dart"
+  - "test/"
+  - "**/*.pb.dart"
+  - "**/*.mocks.dart"
+  - "**/generated*/"
+  - "**/*.gr.dart"
+  - "**/*.config.dart"
+
+# If native Android (Kotlin/Java) or Swift scanning needed
+# Add languages here
+languages:
+  - java
+  - kotlin
+  - swift
+  - javascript  # Needed because CodeQL uses custom queries for Dart-like patterns
